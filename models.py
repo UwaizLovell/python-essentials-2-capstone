@@ -29,4 +29,16 @@ class Student:
         # Return a clean, readable description of the student
         return f"{self.student_id}: {self.name} | Score: {self.score} | Grade: {self.get_grade()}"
 
+class HonoursStudent(Student):
+    # Add research information to an honours student
+    def __init__(self, name, student_id, score, research_topic):
+        super().__init__(name, student_id, score)
+        self.research_topic = research_topic
+
+    def get_grade(self):
+        # Give honours distinction from 75, otherwise use the Student grading
+        if self.score >= 75:
+            return "Distinction (Honours)"
+        return super().get_grade() 
+
     
