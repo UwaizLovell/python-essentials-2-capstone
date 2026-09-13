@@ -68,3 +68,17 @@ def pass_rate(students):
 
     return (passed / len(students)) * 100
 
+def first_passing_student(students):
+    # Create an iterator from the student list
+    student_iterator = iter(students)
+
+    # Check each student using the iterator
+    while True:
+        try:
+            student = next(student_iterator)
+
+            if student.has_passed():
+                return student
+
+        except StopIteration:
+            return None
