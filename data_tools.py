@@ -1,4 +1,5 @@
 import random
+from datetime import datetime
 
 def generate_data_file():
     # Sample names used to generate the raw student records
@@ -62,3 +63,18 @@ def load_students():
             students.append((name, score))
 
     return students
+
+
+def export_report(text):
+    # Write the report text to the report file
+    with open("data/report.txt", "w") as file:
+        file.write(text)
+
+def log_event(message):
+    # Create a timestamp for the activity log
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # Append the timestamp and message to the activity log
+    with open("data/activity.log", "a") as file:
+        file.write(f"[{timestamp}] {message}\n")
+
